@@ -13,8 +13,8 @@
            http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
            	<context:annotation-config />
 	<!--1. 配置注解扫描范围 -->
-	<context:component-scan base-package="com.feng.service.imp.*" />
-    <bean id="userDao" class="com.feng.dao.imp.UserDaoImp" />
+	<context:component-scan base-package="com.feng.service.*" />
+    
 	<!-- 配置service bean -->
 <!-- 	<bean id="userDao" class="Com.feng.dao.imp.UserDaoHibernate">
 	    <property name="sessionFactory"  ref="sessionFactory"></property>
