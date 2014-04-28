@@ -18,9 +18,9 @@ public class Test {
 		// TODO Auto-generated method stub
 	     ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 	    // System.out.println(ctx);
-	     SessionFactory factory = (SessionFactory) ctx.getBean("sessionFactory");
-	     
-	     System.out.println(factory.getCurrentSession());
+	     SessionFactory factory = (SessionFactory) ctx.getBean("sessionFactory");	     
+	     System.out.println(factory);
+		
 /*	     Session s = factory.openSession();
 	     
 	     Survey survey = new Survey(); 

@@ -1,34 +1,34 @@
-package com.feng.dao.imp;
+package com.feng.service.imp;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
-
 import com.feng.dao.BaseDao;
+import com.feng.service.BaseService;
 /**
- * BaseDaoImp是一个抽象的类 专门用来继承
+ * BaseServiceImp是一个抽象方法 用于其他service类继承
  * @author Administrator
  *
  * @param <T>
  */
-
-public abstract class BaseDaoImp<T> implements BaseDao<T> {
-	//注入sessionFactory
+public abstract class BaseServiceImp<T> implements BaseService<T> {
+	private BaseDao<T> dao;
 	@Resource
-	private SessionFactory sf;
+	public void setBaseDao(BaseDao<T> dao) {
+		this.dao = dao;
+	}
+
 	@Override
 	public void saveEntity(T t) {
 		// TODO Auto-generated method stub
-		sf.getCurrentSession().save(t);
+		dao.saveEntity(t);
 	}
 
 	@Override
 	public void saveOrUpdateEntity(T t) {
 		// TODO Auto-generated method stub
-		
+		dao.saveOrUpdateEntity(t);;
 	}
 
 	@Override
@@ -40,7 +40,6 @@ public abstract class BaseDaoImp<T> implements BaseDao<T> {
 	@Override
 	public void deleteEntity(T t) {
 		// TODO Auto-generated method stub
-		sf.getCurrentSession().delete(t);;
 		
 	}
 
@@ -62,15 +61,10 @@ public abstract class BaseDaoImp<T> implements BaseDao<T> {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findEntityByHQL(String hql, Object... objects) {
 		// TODO Auto-generated method stub
-		Query q = sf.getCurrentSession().createQuery(hql);
-		for(int i = 0; i < objects.length; i++) {
-			q.setParameter(i, objects[i]);
-		}
-		return q.list();
+		return dao.findEntityByHQL(hql, objects);
 	}
 
 }
