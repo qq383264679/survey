@@ -1,5 +1,7 @@
 package com.feng.service;
 
-public interface UserService {
+import com.feng.model.User;
+
+public interface UserService extends BaseService<User>{
 
 }

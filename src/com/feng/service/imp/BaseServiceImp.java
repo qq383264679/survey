@@ -22,6 +22,7 @@ public abstract class BaseServiceImp<T> implements BaseService<T> {
 	@Override
 	public void saveEntity(T t) {
 		// TODO Auto-generated method stub
+		System.out.println("111111111111");
 		dao.saveEntity(t);
 	}
 

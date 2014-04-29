@@ -51,4 +51,31 @@
 	    p:dataSource-ref="dataSource"
 	    p:configLocation="classpath:hibernate.cfg.xml"
 	    />
+		<!-- Hibernate事物管理器 用来在service层面上进行管理 达到平台无关性 -->
+	
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 配置事物通知 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+	    <tx:attributes>
+	       	<!--读 -->
+	        <tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT"/>
+	        <tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT"/>
+	        <tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT"/>
+	        <tx:method name="batch*" propagation="REQUIRED" isolation="DEFAULT"/>
+	        <!-- 写 -->
+	        <tx:method name="load*" propagation="REQUIRED" isolation="DEFAULT" read-only="true"/>
+	        <tx:method name="get*" propagation="REQUIRED" isolation="DEFAULT" read-only="true"/>
+	        <tx:method name="find*" propagation="REQUIRED" isolation="DEFAULT" read-only="true"/>
+	        
+	        <tx:method name="*" propagation="REQUIRED" isolation="DEFAULT"/>
+	    </tx:attributes>
+	</tx:advice>
+	<!-- AOP -->
+	<aop:config> 
+	    <aop:pointcut id="txPointcut" expression="execution(* com.feng.service.*.*(..))"/>  
+	    <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+	</aop:config>    
 </beans>
