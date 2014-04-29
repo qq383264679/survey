@@ -23,7 +23,7 @@ public class UserTest {
 		User u = new User();
 		u.setEmail("383264@ss.com");
 		u.setName("fengchao ");
-		u.setNickName("¹þà¶");
+		u.setNickName("¹þà¶1111111");
 		userService.saveEntity(u);
 	
 	}
