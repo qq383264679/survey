@@ -49,7 +49,8 @@ public class UserServiceImp extends BaseServiceImp<User> implements UserService{
 		for(User user : lists) {
 			String name = user.getName().trim();
 			String password = user.getPassword().trim();
-			if(name.trim().equals(u.getName().trim()) && password.equals(u.getPassword().trim())) {
+			//System.out.println(name + ":::" + password);
+			if(name.trim().equals(u.getName().trim()) && password.trim().equals(u.getPassword().trim())) {
 				b = true;
 				break;
 			}

@@ -19,7 +19,8 @@
 		<!-- 登陆 -->
 		<action name="lognAction_*" class="com.feng.action.LognAction" method="{1}">
 			<result name="lognView">index.jsp</result>
-			<result name="input">index.jsp</result>
+			<result name="succeed">page/survey_logn.jsp</result>
+		<!-- 	<result name="input">index.jsp</result>  -->
 		</action>
 	</package>
 </struts>

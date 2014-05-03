@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,7 +40,13 @@
 <body>
 	<!--整体布局-->
     <div class="easyui-layout" id="cc" style="height:730px;">
-    	<div data-options="region:'north',split:false" style="height:110px;"><img class="title_image" src="images/title_survey.jpg"/><h1 class="title_">用户调查系统</h1></div>
+    	<div data-options="region:'north',split:false" style="height:110px;"><img class="title_image" src="images/title_survey.jpg"/><h1 class="title_">用户调查系统</h1>
+    		        <span class="title_name">
+    		        	<c:if test="${!empty user}">
+							欢迎用户：${user.name }	
+						</c:if>			
+        			</span>
+    	</div>
         
         <!--左边导航-->
     	<div region="west" style="width:180px" title="导航" split="true">
@@ -100,7 +107,7 @@
         <div data-options="region:'center'">
         	<!-- tab-->
             <div class="easyui-tabs" fit="true" border="false" id="tt">
-            	<div title="首页"><iframe src='page/survey_logn.html' width='100%' height='100%' scrolling='no' frameborder=0></iframe></div> <!--第一个tab-->
+            	<div title="首页"><iframe src='page/survey_logn.jsp' width='100%' height='100%' scrolling='no' frameborder=0></iframe></div> <!--第一个tab-->
                 
                 <div title="首页1111111111" closable="true">test</div> <!--第一个tab-->
             </div>
