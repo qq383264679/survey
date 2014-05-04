@@ -7,14 +7,19 @@
     <!-- name随便写  用于被其他包引用
         namespace标示随便写 
     -->
-	<package name="test" namespace="/" extends="struts-default">
+	<package name="surveyDoor" namespace="/" extends="struts-default">
 	    <action name="test">
 	        <result name="success">index.jsp</result>
 	    </action>
-	    <!--
-		<action name="input" class="Com.feng.action.RegisterAction">
-			<result name="success">/WEB-INF/page/register.jsp</result>
+	    <!-- 注册 -->
+		<action name="regAction_*" class="com.feng.action.RegAction" method="{1}">
+			<result name="regView">index.jsp</result>
 		</action>
-		  -->
+		 
+		<!-- 登陆 -->
+		<action name="lognAction_*" class="com.feng.action.LognAction" method="{1}">
+			<result name="lognView">index.jsp</result>
+			<result name="input">index.jsp</result>
+		</action>
 	</package>
 </struts>

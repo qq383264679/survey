@@ -1,6 +1,10 @@
 package com.feng.dao.imp;
 
 import org.springframework.stereotype.Repository;
+
+import com.feng.model.User;
+
+
 /**
  * 
  * @author fengchao
@@ -9,6 +13,6 @@ import org.springframework.stereotype.Repository;
  */
 //œÒSpring÷–◊¢»Î UserDaoImp¿‡
 @Repository("userDao")
-public class UserDaoImp<User> extends BaseDaoImp<User> {
-
+public class UserDaoImp extends BaseDaoImp<User> {
+	
 }

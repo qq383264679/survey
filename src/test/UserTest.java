@@ -19,12 +19,14 @@ public class UserTest {
 	}
 	@Test
 	public void second() {
-		System.out.println(userService);
+/*		System.out.println(userService);
 		User u = new User();
 		u.setEmail("383264@ss.com");
 		u.setName("fengchao ");
 		u.setNickName("¹þà¶1111111");
-		userService.saveEntity(u);
+		userService.saveEntity(u);*/
+		User u = userService.getEntity(5);
+		System.out.println(u.getNickName());
 	
 	}
 }

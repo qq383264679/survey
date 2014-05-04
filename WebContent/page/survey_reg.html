@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册界面</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+</head>
+<style type="text/css">
+	body {
+		padding:60px;
+	}
+</style>
+<script>
+	$(document).ready(function(e) {
+        //表单验证
+		 $.extend($.fn.validatebox.defaults.rules, {    
+   			 password: {    
+				 validator: function(value, param){
+					//alert(value);    
+					return (value.length > param[0] && value.length < param[1]);    
+				 },    
+        		 message: '请输出大于 {0} 并且小于 {1} 的密码'   
+    		},
+			//确认密码
+			confirm_pass: {
+				validator: function(value, param){
+					var password = $("#get_password").val();
+					return (value == password);
+				},
+				message: '密码不一致'
+			}    
+		});
+		//表单提交
+		$("#submit_").click(function(e) {
+ 		   $('#form1').form('submit', {    
+        	    url:'regAction_doReg.action', 
+        	    onSubmit: function(){    
+        	        // do some check    
+        	        // return false to prevent submit;
+        	        var isValid = $("#form1").form('validate');
+        	        if(isValid) {
+        	        	return true;
+        	        } else {
+        	        	return false;
+        	        }
+        	    },    
+        	    success:function(data){    
+        	    	//返回类型 {"success":true,"message":"恭喜你注册成功"}
+        	    	var data = eval('(' + data + ')');  // change the JSON string to javascript object    
+        	    	$.messager.alert("提示", data.message);
+        	    	if(data.success) {
+        	    		$('#form1').form("clear");
+        	    	}
+        	    }  
+        	});  
+		}); 
+    });
+
+</script>
+<body>
+		<!--
+           	private String email;
+			private String name;
+			private String password;
+			private String nickName;
+         -->
+   	 <fieldset>	
+     <legend>注册区域</legend>
+     <form id="form1" action="regAction_doReg.action">
+     	<table style="margin:0 auto; width:560px;">
+        	<tr>
+            	<td>用户名:</td>
+                <td><input type="text" name="name" class="easyui-validatebox" data-options="required:true" missingMessage="必须得输入"/></td>
+            </tr>
+            <tr>
+            	<td>密码:</td>
+                <td><input id="get_password" type="text" data-options="required:true" missingMessage="必须得输入" name="password" class="easyui-validatebox" validType="password[3,10]"  /></td>
+            </tr>
+            <tr>
+            	<td>重复密码:</td>
+                <td><input type="text" name="confirm_password" data-options="required:true" missingMessage="必须得输入" class="easyui-validatebox" validType="confirm_pass" /></td>
+            </tr>
+            <tr>
+            	<td>昵称:</td>
+                <td><input type="text" name="nickName" /></td>
+            </tr>
+            <tr>
+            	<td>邮箱:</td>
+                <td><input type="text" name="email" data-options="required:true" missingMessage="必须得输入" class="easyui-validatebox" validType="email" invalidMessage="请输入正确邮箱地址"/></td>
+            </tr>
+            <tr>
+            	<td colspan="2">&nbsp;&nbsp;&nbsp;<input id="submit_" type="button" value="提交" /> &nbsp;&nbsp;&nbsp;<input type="reset" value="重置" /></td>
+            </tr>
+        </table>       
+     </form>
+     </fieldset>
+</body>
+</html>

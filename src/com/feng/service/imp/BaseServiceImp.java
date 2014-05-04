@@ -34,31 +34,31 @@ public abstract class BaseServiceImp<T> implements BaseService<T> {
 	@Override
 	public void updateEntity(T t) {
 		// TODO Auto-generated method stub
-		
+		dao.updateEntity(t);
 	}
 
 	@Override
 	public void deleteEntity(T t) {
 		// TODO Auto-generated method stub
-		
+		dao.deleteEntity(t);
 	}
 
 	@Override
 	public void batchEntityByHQL(String hql, Object... object) {
 		// TODO Auto-generated method stub
-		
+		dao.batchEntityByHQL(hql, object);
 	}
 
 	@Override
 	public T loadEntity(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.loadEntity(id);
 	}
 
 	@Override
 	public T getEntity(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getEntity(id);
 	}
 
 	@Override

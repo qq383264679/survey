@@ -15,11 +15,11 @@ import com.feng.model.User;
 
 public class Test extends T_Test<User>{
 	public Test() {
-		super();
+		System.out.println("sssssss");
 	}
 	public static void main(String[] args) {
 		Test t = new Test();
-		System.out.println("sss");
+		
 	}
 
 }
