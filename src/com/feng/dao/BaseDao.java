@@ -2,6 +2,8 @@ package com.feng.dao;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+
 public interface BaseDao<T> {
 	//Ð´²Ù×÷
 	public void saveEntity(T t);
@@ -13,4 +15,7 @@ public interface BaseDao<T> {
 	public T loadEntity(int id);
 	public T getEntity(int id);
 	public List<T> findEntityByHQL(String hql, Object...objects);
+	
+	//»ñÈ¡sessionFactory
+	public SessionFactory getSession();
 }

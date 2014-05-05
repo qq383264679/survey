@@ -1,5 +1,6 @@
 package test;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -21,20 +22,14 @@ public class DaoTest {
 		 
 	     
 	     Transaction tx = null;
-         Session session = null;
          try {                
                  
-                 tx = s.beginTransaction();
-                 User u = new User();
-                 u.setName("qaz");
-                 u.setPassword("123456");
-                 
-                 Survey survey = new Survey();
-                 survey.setUser(u);
-                 
-                 s.save(u);
-                 s.save(survey);
-                 tx.commit();
+        	 String hql = "from User where name = ?";
+        	 Query q = s.createQuery(hql);
+        	 q.setParameter(0, "qaz");
+        	 
+        	 User u = (User) q.uniqueResult();
+        	System.out.println(u.getId());
          } catch(RuntimeException e) {
                  if(tx != null) {
                          tx.rollback();

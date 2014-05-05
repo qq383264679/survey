@@ -8,6 +8,41 @@ $(document).ready(function(e) {
 		//去除其他的样式
 		remove_addStyle("#acc_index");
 	});
+	//2
+	$("#acc_new_survey").click(function(e) {
+		//新建调查
+		var t = $('#tt').tabs('exists', '新建调查');//判断是tab是否打开(exist)存在
+		if(!t) {
+			//添加tab选项
+			$('#tt').tabs('add',{    
+				title:'新建调查',    
+				content:"xinji 调查```````zxzx``````````````",    
+				closable:true, 
+				selected:true   
+			}); 
+		} else {
+			$('#tt').tabs('select','新建调查');
+		} 
+		//去除其他的样式
+		remove_addStyle("#acc_new_survey");
+	});
+	//3
+	$("#acc_my_survey").click(function(e) {
+		var t = $('#tt').tabs('exists', '我的调查');//判断是tab是否打开(exist)存在
+		if(!t) {
+			//添加tab选项
+			$('#tt').tabs('add',{    
+				title:'我的调查',    
+				content:"<iframe src='page/my_survey.html' width='100%' height='100%' scrolling='no' frameborder=0></iframe>",    
+				closable:true, 
+				selected:true   
+			}); 
+		} else {
+			$('#tt').tabs('select','我的调查');
+		} 
+		//去除其他的样式
+		remove_addStyle("#acc_my_survey");
+	});
 	//5
 	$("#acc_reg").click(function(e) {
 		//自定义tab选项
@@ -39,6 +74,12 @@ $(document).ready(function(e) {
     			if(title == '用户注册') {
 					//去除其他的样式
 					remove_addStyle("#acc_reg");
+				}
+				if(title == '新建调查') {
+					remove_addStyle("#acc_new_survey");
+				}
+				if(title == '我的调查') {
+					remove_addStyle("#acc_my_survey");
 				}
 			},
 			//关闭tab 时候触发函数

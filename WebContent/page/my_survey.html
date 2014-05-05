@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的调查</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+</head>
+<script>
+	$(document).ready(function(e) {
+        $("#my_survey").datagrid({
+        	url:'../surveyAction_findSurveys.action',
+			title:'我的调查',
+			columns:[[    
+					{field:'id',title:'id',width:80,sortable:false, align:'center'},    
+					{field:'title',title:'调查标题', width:80,sortable:false, align:'center',editor:'text'},    
+					{field:'createTime', title:'创建时间',sortable:false, align:'center'},
+					{field:'status' ,title:'状态', width:80, align:'center',formatter: function(value,row,index){
+						var s = '开放';
+						return s;
+					}},
+					{field:'design' , title:'设计', width:80, align:'center', formatter: function(value,row,index){
+						var s = '<a href="#" onclick="saverow('+index+')">设计</a> ';
+						return s;
+					}},
+					{field:'collect_message', title:'收集信息', width:100, align:'center', formatter: function(value,row,index){
+						var s = '<a href="#" onclick="saverow('+index+')">收集信息</a> ';
+						return s;
+					}},
+					{field:'open_close', title:'打开/关闭', width:100, align:'center', formatter: function(value,row,index){
+						var s = '<a href="#" onclick="saverow('+index+')">打开/关闭</a> ';
+						return s;
+					}},
+					{field:'clear' , width:80, title:'清除调查', align:'center', formatter: function(value,row,index){
+						var s = '<a href="#" onclick="saverow('+index+')">清楚调查</a> ';
+						return s;
+					}},
+					{field:'delete', width:80, title:'删除', align:'center', formatter: function(value,row,index){
+						var s = '<a href="#" onclick="saverow('+index+')">删除</a> ';
+						return s;
+					}},
+				]],  
+			
+			
+			
+		});
+    });
+</script>
+<body>
+    <table id="my_survey" style="height:360px;">   
+	</table>   
+</body>
+</html>

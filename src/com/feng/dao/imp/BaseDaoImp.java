@@ -87,5 +87,8 @@ public abstract class BaseDaoImp<T> implements BaseDao<T> {
 		}
 		return q.list();
 	}
-
+	@Override
+	public SessionFactory getSession() {
+		return sf;
+	}
 }

@@ -58,13 +58,13 @@
                             	<a href="#"><font size="+1">首页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></a>
                         	</div>
                         </li>
-                        <li style="margin-top:10px;">
-                        	<div class="">
+                        <li style="margin-top:10px;" id="acc_new_survey">
+                        	<div>
                             	<a href="#"><font size="+1">新建调查页&nbsp;&nbsp;</font></a>
                         	</div>
                         </li>
-                        <li style="margin-top:10px;" id="">
-                        	<div class="" id="">
+                        <li style="margin-top:10px;" id="acc_my_survey">
+                        	<div>
                             	<a href="#"><font size="+1">我的调查页&nbsp;&nbsp;</font></a>
                         	</div>
                         </li>

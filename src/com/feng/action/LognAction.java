@@ -46,6 +46,7 @@ public class LognAction extends BaseAction<User> implements SessionAware {
 			json.put("succeed", true);
 			json.put("message", "恭喜你 登陆成功");
 			//将结果存在session 域中
+			
 			session.put("user", this.user);
 			//User u = (User)session.get("user");
 			//System.out.println(u.getPassword());
